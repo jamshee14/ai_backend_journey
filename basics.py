@@ -1,13 +1,16 @@
+import statistics
 def calculate_average(all_marks):
-    average=sum(all_marks)/len(all_marks)
-    return average
+    return statistics.mean(all_marks)
 student_data={}
 while True:
     name=input("enter students name: ")
     if name=="exit":
         break
-    marks=float(input("enter student marks: "))
-    student_data[name]=marks    
+    try:
+        marks=float(input("enter student marks: "))
+        student_data[name]=marks    
+    except ValueError:
+        print("thats not a number")
 all_marks=student_data.values()
 if len(all_marks)>0:
     print(f"average marks is {calculate_average(all_marks)}") 
